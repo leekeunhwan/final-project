@@ -122,7 +122,6 @@ export default class CreateProjectForm extends React.Component {
                   as={Menu}
                   animation={animation}
                   direction={direction}
-                  inverted
                   onHide={this.handleSidebarHide}
                   icon="labeled"
                   vertical
@@ -152,13 +151,7 @@ export default class CreateProjectForm extends React.Component {
                   </Menu.Item>
                 </Sidebar>
                 <Sidebar.Pusher>
-                  <Segment
-                    basic
-                    // style={{
-                    //   backgroundImage:
-                    //     'url(https://images.unsplash.com/photo-1463527882365-18201e85a091?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=403d33ecb44a23573f57841b07077434&auto=format&fit=crop&w=2238&q=80)',
-                    // }}
-                  >
+                  <Segment basic>
                     <React.Fragment style={{ mixBlendMode: 'saturation' }}>
                       <Container
                         style={{

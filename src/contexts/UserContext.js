@@ -48,8 +48,9 @@ class UserProvider extends React.Component {
     this.setState({
       loading: true,
     });
+
     try {
-      if (userImg === []) {
+      if (userImg[0].username === undefined) {
         await pmAPI.post('users/register', {
           username: username,
           password: password,

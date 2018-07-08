@@ -32,6 +32,7 @@ export default class JoinForm extends React.Component {
 
   getFiles(files) {
     this.setState({ files: files });
+    console.log(this.state);
   }
 
   render() {

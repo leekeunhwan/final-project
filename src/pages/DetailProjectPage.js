@@ -83,7 +83,6 @@ export default class DetailProjectPage extends React.Component {
                         as={Menu}
                         animation={animation}
                         direction={direction}
-                        inverted
                         onHide={this.handleSidebarHide}
                         icon="labeled"
                         vertical

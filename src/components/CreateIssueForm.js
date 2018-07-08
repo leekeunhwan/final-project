@@ -39,15 +39,13 @@ export default class CreateIssueForm extends React.Component {
   titleRef = React.createRef();
   bodyRef = React.createRef();
 
-  handleButtonClick = () =>
-    this.setState({
-      visible: !this.state.visible,
-    });
-
   handleSidebarHide = () =>
     this.setState({
       visible: false,
     });
+
+  handleAnimationChange = animation => () =>
+    this.setState({ animation, visible: !this.state.visible });
 
   // Tag, Autocomplete 관련 함수
   // 태그 삭제
@@ -151,7 +149,7 @@ export default class CreateIssueForm extends React.Component {
   };
 
   render() {
-    const { visible } = this.state;
+    const { animation, direction, visible } = this.state;
     const { suggestions, labelSuggestions } = this.props;
     return (
       <UserConsumer>
@@ -165,10 +163,17 @@ export default class CreateIssueForm extends React.Component {
                   </Dimmer>
                 ) : (
                   <React.Fragment>
-                    <Menu attached="top" id="myPage__Menu" inverted>
+                    <Menu
+                      secondary
+                      attached="top"
+                      id="myPage__Menu"
+                      inverted
+                      style={{ marginBottom: 0 }}
+                    >
                       <Menu.Item
                         id="myPage__sidebarButton"
-                        onClick={this.handleButtonClick}
+                        onClick={this.handleAnimationChange('overlay')}
+                        onChange={this.handleDimmedChange}
                       >
                         <Icon name="bars" size="large" />
                       </Menu.Item>
@@ -185,14 +190,17 @@ export default class CreateIssueForm extends React.Component {
                         </Menu.Item>
                       </Menu.Menu>
                     </Menu>
-
-                    <Sidebar.Pushable as={Segment} className="myPage__sidebar">
+                    <Sidebar.Pushable
+                      as={Segment}
+                      className="myPage__sidebar"
+                      style={{ marginTop: 0 }}
+                    >
                       <Sidebar
                         id="myPage__sidebar"
                         as={Menu}
-                        inverted
+                        animation={animation}
+                        direction={direction}
                         onHide={this.handleSidebarHide}
-                        animation="overlay"
                         icon="labeled"
                         vertical
                         visible={visible}
